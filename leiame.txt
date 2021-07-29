@@ -1,0 +1,19 @@
+
+#script em package
+"start": "node index.js"
+
+#node version
+"engine": "14.17.0"
+
+#configurar porta
+const PORT = process.env.PORT || 4000
+app.listen(PORT,()=>{
+  console.log('Servidor online')
+} )
+
+#publicar
+heroku login
+heroku create
+heroku git:remote -a apppatrimonio
+git push heroku main
+heroku open
