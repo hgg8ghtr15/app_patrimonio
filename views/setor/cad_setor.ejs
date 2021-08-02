@@ -1,0 +1,30 @@
+<%- include("../partes/header.ejs") %>
+
+<body>
+<%- include("../partes/navebar.ejs") %>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-11">
+                    <h3 class="">Cadastro de Setor</h3>
+                </div>
+                <div class="col-1">
+                    <a href="/setor" class="btn btn-primary">Voltar</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <form method="post" action="/setor/cadastrar">
+                <div class="form-group">
+                    <label>Nome Do Setor</label>
+                    <input type="text" name="setor_nome" class="form-control" placeholder="Nome Do Setor">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Gravar</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<%- include("../partes/footer.ejs") %>

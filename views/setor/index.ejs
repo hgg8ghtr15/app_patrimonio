@@ -1,0 +1,57 @@
+<%- include("../partes/header.ejs") %>
+
+<body>
+    <%- include("../partes/navebar.ejs") %>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-3">
+                        <h3 class="">Setor</h3>
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control mr-sm-2" type="input" id="pesquisa" onkeyup="pesquisar()" placeholder="Pesquisar" aria-label="Search">
+                    </div>
+                    <div class="col-1">
+                        <a href="/setor/cadastrar" class="btn btn-primary">+</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Criação</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela" >
+                        <% setores.forEach(setor =>{ %>
+                            <tr>
+                                <th><%= setor.id %></th>
+                                <th><%= setor.setor_nome %></th>
+                                <th>
+                                    <%= setor.createdAt.getDate()%>/
+                                    <%= setor.createdAt.getMonth()%>/
+                                    <%= setor.createdAt.getFullYear()%> às
+                                    <%= setor.createdAt.getHours()%>:
+                                    <%= setor.createdAt.getMinutes()%>
+                                </th>
+                                <th>
+                                    <a href="/setor/editar/<%= setor.id %>" class="btn btn-warning">Editar</a>
+                                    <form method="post" action="/setor/deletar" class="d-inline">
+                                        <input type="hidden" name="id" value="<%= setor.id %>" />
+                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                    </form>
+                                </th>
+                            </tr>
+                        <%})%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include("../partes/footer.ejs") %>
